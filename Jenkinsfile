@@ -18,36 +18,48 @@ pipeline {
 
   //Aquí comienzan los “items” del Pipeline
   stages{
-    stage('Checkout') {
-      steps{
-        echo "------------>Checkout<------------"
-      }
-    }
+        stage('Checkout') {
+            steps{
+            echo "------------>Checkout<------------"
+            checkout([
+                $class: 'GitSCM',
+                branches: [[name: '*/master']],
+                doGenerateSubmoduleConfigurations: false,
+                extensions: [],
+                gitTool: 'Default',
+                submoduleCfg: [],
+                userRemoteConfigs: [[
+                credentialsId: 'GitHub_luisjosetorres12',
+                url:'https://github.com/luisjosetorres12/parking-java'
+                ]]
+            ])
+
+            }
+        }
 
     stage('Compile & Unit Tests') {
       steps{
         echo "------------>compile & Unit Tests<------------"
         sh 'chmod +x gradlew'
-        sh './gradlew --b ./build.gradle test'
+        sh './gradlew --b ./microservicio-mantenimiento/build.gradle test'
 
       }
     }
 
-    stage('Static Code Analysis') {
-      steps{
-        echo '------------>Análisis de código estático<------------'
-        sonarqubeMasQualityGatesP(sonarKey:'co.com.ceiba.adn:[parqueadero-jose.torres]',
-                sonarName:'CeibaADN-Parqueaderp(jose.torres)',
-                sonarPathProperties:'./sonar-project.properties')
+        stage('Static Code Analysis') {
+            steps{
+            echo '------------>Análisis de código estático<------------'
+            withSonarQubeEnv('Sonar') {
+                sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner"
             }
-
-      }
-    }
+            }
+        }
 
     stage('Build') {
       steps {
         echo "------------>Build<------------"
-        sh './gradlew --b ./build.gradle build -x test'
+         sh './gradlew --b ./microservicio-mantenimiento/build.gradle clean'
+         sh './gradlew --b ./microservicio-mantenimiento/build.gradle build'
       }
     }
   }
