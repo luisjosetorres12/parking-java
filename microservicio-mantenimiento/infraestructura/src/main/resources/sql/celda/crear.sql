@@ -1,0 +1,1 @@
+insert into celda (tipoVehiculo, estadoCelda) values (:tipoVehiculo, :estadoCelda)
