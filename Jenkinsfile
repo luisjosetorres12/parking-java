@@ -69,7 +69,7 @@ pipeline {
     }
     success {
       echo 'This will run only if successful'
-      junit 'build/test-results/test/*.xml' //RUTA RELATIVA DE LOS ARCHIVOS .XML
+      junit '**/test-results/test/*.xml' //RUTA DE TUS ARCHIVOS .XML
     }
     failure {
       mail (to: 'jose.torres@ceiba.com.co',subject: "Failed Pipeline:${currentBuild.fullDisplayName}",body: "Something is wrong with ${env.BUILD_URL}")
