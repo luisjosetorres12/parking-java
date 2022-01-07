@@ -1,5 +1,6 @@
 package com.ceiba.celda.controlador;
 
+import com.ceiba.celda.consulta.ManejadorBuscarCelda;
 import com.ceiba.celda.consulta.ManejadorListarCeldas;
 import com.ceiba.celda.consulta.ManejadorListarCeldasDisponibles;
 import com.ceiba.celda.consulta.ManejadorListarCeldasTipoVehiculo;
@@ -20,11 +21,13 @@ public class ConsultaControladorCelda {
     private final ManejadorListarCeldas manejadorListarCeldas;
     private final ManejadorListarCeldasDisponibles manejadorListarCeldasDisponibles;
     private final ManejadorListarCeldasTipoVehiculo manejadorListarCeldasTipoVehiculo;
+    private final ManejadorBuscarCelda manejadorBuscarCelda;
 
-    public ConsultaControladorCelda(ManejadorListarCeldas manejadorListarCeldas, ManejadorListarCeldasDisponibles manejadorListarCeldasDisponibles, ManejadorListarCeldasTipoVehiculo manejadorListarCeldasTipoVehiculo) {
+    public ConsultaControladorCelda(ManejadorListarCeldas manejadorListarCeldas, ManejadorListarCeldasDisponibles manejadorListarCeldasDisponibles, ManejadorListarCeldasTipoVehiculo manejadorListarCeldasTipoVehiculo, ManejadorBuscarCelda manejadorBuscarCelda) {
         this.manejadorListarCeldas = manejadorListarCeldas;
         this.manejadorListarCeldasDisponibles = manejadorListarCeldasDisponibles;
         this.manejadorListarCeldasTipoVehiculo = manejadorListarCeldasTipoVehiculo;
+        this.manejadorBuscarCelda = manejadorBuscarCelda;
     }
 
     @GetMapping
@@ -39,5 +42,11 @@ public class ConsultaControladorCelda {
     @ApiOperation("Listar celdas disponibles por tipo vehiculo")
     public List<DtoCelda> listarCeldasDisponiblesTipoVehiculo(@PathVariable int tipoVehiculo) {
         return this.manejadorListarCeldasTipoVehiculo.ejecutar(tipoVehiculo);
+    }
+
+    @GetMapping(value = "/{id}")
+    @ApiOperation("Obtener una celda")
+    public DtoCelda obtenerCelda(@PathVariable Long id){
+        return this.manejadorBuscarCelda.ejecutar(id);
     }
 }

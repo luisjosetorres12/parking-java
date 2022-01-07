@@ -1,6 +1,7 @@
 package com.ceiba.configuracion;
 
 import com.ceiba.celda.puerto.repositorio.IRepositorioCelda;
+import com.ceiba.celda.servicio.ServicioBuscarCelda;
 import com.ceiba.celda.servicio.ServicioCambiarEstadoCelda;
 import com.ceiba.celda.servicio.ServicioCrearCelda;
 import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
@@ -36,6 +37,11 @@ public class BeanServicio {
     @Bean
     public ServicioCambiarEstadoCelda servicioCambiarEstadoCelda(IRepositorioCelda repositorioCelda) {
         return new ServicioCambiarEstadoCelda(repositorioCelda);
+    }
+
+    @Bean
+    public ServicioBuscarCelda servicioBuscarCelda(IRepositorioCelda repositorioCelda) {
+        return new ServicioBuscarCelda(repositorioCelda);
     }
 	
 
