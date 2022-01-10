@@ -1,6 +1,7 @@
 package com.ceiba.celda.puerto.dao;
 
 import com.ceiba.celda.modelo.dto.DtoCelda;
+import com.ceiba.celda.modelo.dto.DtoListCeldas;
 import com.ceiba.celda.modelo.entidad.Celda;
 
 import java.util.List;
@@ -15,4 +16,5 @@ public interface DaoCelda {
     List<DtoCelda> listarCeldasDisponibles();
     List<DtoCelda> listarCeldasDisponiblesTipoVehiculo(int id);
     DtoCelda buscarCeldaPorId(Long idCelda);
+    List<DtoListCeldas> listarCeldasTipo();
 }

@@ -4,6 +4,9 @@ import com.ceiba.celda.puerto.repositorio.IRepositorioCelda;
 import com.ceiba.celda.servicio.ServicioBuscarCelda;
 import com.ceiba.celda.servicio.ServicioCambiarEstadoCelda;
 import com.ceiba.celda.servicio.ServicioCrearCelda;
+import com.ceiba.ticket.puerto.repository.IRepositoryTicket;
+import com.ceiba.ticket.servicio.ServicioCalcularFechaSalida;
+import com.ceiba.ticket.servicio.ServicioCrearTicket;
 import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
 import com.ceiba.usuario.servicio.ServicioActualizarUsuario;
 import com.ceiba.usuario.servicio.ServicioCrearUsuario;
@@ -43,6 +46,15 @@ public class BeanServicio {
     public ServicioBuscarCelda servicioBuscarCelda(IRepositorioCelda repositorioCelda) {
         return new ServicioBuscarCelda(repositorioCelda);
     }
-	
+
+    @Bean
+    public ServicioCrearTicket servicioCrearTicket(IRepositoryTicket repositoryTicket, ServicioCalcularFechaSalida servicioCalcularFechaSalida) {
+        return new ServicioCrearTicket(repositoryTicket, servicioCalcularFechaSalida);
+    }
+
+    @Bean
+    public ServicioCalcularFechaSalida servicioCalcularFechaSalida(){
+        return new ServicioCalcularFechaSalida();
+    }
 
 }

@@ -1,0 +1,1 @@
+select count(id) from ticket where cedulaUsuario = :cedulaUsuario and estadoTicket = 0;

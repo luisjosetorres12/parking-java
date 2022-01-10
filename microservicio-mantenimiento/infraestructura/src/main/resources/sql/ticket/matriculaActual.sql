@@ -1,0 +1,1 @@
+select count(id) from ticket where matriculaVehiculo = :matriculaVehiculo and estadoTicket = 0;

@@ -1,19 +1,15 @@
 package com.ceiba.celda.controlador;
 
-import com.ceiba.celda.consulta.ManejadorBuscarCelda;
-import com.ceiba.celda.consulta.ManejadorListarCeldas;
-import com.ceiba.celda.consulta.ManejadorListarCeldasDisponibles;
-import com.ceiba.celda.consulta.ManejadorListarCeldasTipoVehiculo;
+import com.ceiba.celda.consulta.*;
 import com.ceiba.celda.modelo.dto.DtoCelda;
+import com.ceiba.celda.modelo.dto.DtoListCeldas;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200/")
 @RestController
 @RequestMapping("/celda")
 @Api(tags={"Controlador consulta celda"})
@@ -22,12 +18,14 @@ public class ConsultaControladorCelda {
     private final ManejadorListarCeldasDisponibles manejadorListarCeldasDisponibles;
     private final ManejadorListarCeldasTipoVehiculo manejadorListarCeldasTipoVehiculo;
     private final ManejadorBuscarCelda manejadorBuscarCelda;
+    private final ManejadorDetallesCeldas manejadorDetallesCeldas;
 
-    public ConsultaControladorCelda(ManejadorListarCeldas manejadorListarCeldas, ManejadorListarCeldasDisponibles manejadorListarCeldasDisponibles, ManejadorListarCeldasTipoVehiculo manejadorListarCeldasTipoVehiculo, ManejadorBuscarCelda manejadorBuscarCelda) {
+    public ConsultaControladorCelda(ManejadorListarCeldas manejadorListarCeldas, ManejadorListarCeldasDisponibles manejadorListarCeldasDisponibles, ManejadorListarCeldasTipoVehiculo manejadorListarCeldasTipoVehiculo, ManejadorBuscarCelda manejadorBuscarCelda, ManejadorDetallesCeldas manejadorDetallesCeldas) {
         this.manejadorListarCeldas = manejadorListarCeldas;
         this.manejadorListarCeldasDisponibles = manejadorListarCeldasDisponibles;
         this.manejadorListarCeldasTipoVehiculo = manejadorListarCeldasTipoVehiculo;
         this.manejadorBuscarCelda = manejadorBuscarCelda;
+        this.manejadorDetallesCeldas = manejadorDetallesCeldas;
     }
 
     @GetMapping
@@ -48,5 +46,11 @@ public class ConsultaControladorCelda {
     @ApiOperation("Obtener una celda")
     public DtoCelda obtenerCelda(@PathVariable Long id){
         return this.manejadorBuscarCelda.ejecutar(id);
+    }
+
+    @GetMapping("/detalles")
+    @ApiOperation("Obtener detalles de celdas")
+    public List<DtoListCeldas> detallesCeldas() {
+        return this.manejadorDetallesCeldas.ejecutar();
     }
 }
