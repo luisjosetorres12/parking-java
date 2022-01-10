@@ -6,6 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Celda {
+
     private Long id;
     private int tipoVehiculo;
     private int estadoCelda;
