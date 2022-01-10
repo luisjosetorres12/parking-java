@@ -45,7 +45,7 @@ public class ServicioCrearTicket {
 
     public float recargoPorDiasFestivos(Date fechaEntrada, Date fechaSalida) {
         List<DiaFestivo> diasFestivos = this.repositoryTicket.diasFesvitos(fechaEntrada, fechaSalida);
-        return 250 * diasFestivos.size();
+        return (float) 250 * diasFestivos.size();
 
     }
 }
