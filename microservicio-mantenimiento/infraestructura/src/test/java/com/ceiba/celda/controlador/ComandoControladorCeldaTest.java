@@ -56,4 +56,15 @@ public class ComandoControladorCeldaTest {
                 .andExpect(status().isOk())
                 .andExpect(content().json("{'valor': true}"));
     }
+
+    @Test
+    @DisplayName("No deberia actualizar una celda ocupada")
+    void noDeberiaCambiarEstadoCelda() throws Exception {
+        ComandoCelda celda = new ComandoCeldaTestDataBuilder().conEstadoCelda(0).build();
+        Long id = 1L;
+        mocMvc.perform(put("/celda/{idCelda}", id)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(celda)))
+                .andExpect(status().is(500));
+    }
 }

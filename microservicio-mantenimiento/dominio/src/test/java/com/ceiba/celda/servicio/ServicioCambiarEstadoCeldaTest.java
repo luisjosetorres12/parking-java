@@ -6,11 +6,23 @@ import com.ceiba.celda.puerto.repositorio.IRepositorioCelda;
 import com.ceiba.celda.servicio.testdatabuilder.CeldaTestDataBuilder;
 import com.ceiba.dominio.excepcion.ExcepcionCeldaOcupada;
 
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 public class ServicioCambiarEstadoCeldaTest {
+
+    @Test
+    @DisplayName("No Deberia actualizar el estado de una celda")
+    void noDeberiaCambiarEstadoCelda() {
+        Celda celdaNueva = new CeldaTestDataBuilder().conEstadoCelda(0).build();
+        IRepositorioCelda repositorioCelda = Mockito.mock(IRepositorioCelda.class);
+        Mockito.when(repositorioCelda.buscarCeldaId(Mockito.anyLong())).thenReturn(celdaNueva);
+
+        ServicioCambiarEstadoCelda servicioCambiarEstadoCelda = new ServicioCambiarEstadoCelda(repositorioCelda);
+        BasePrueba.assertThrows(() -> servicioCambiarEstadoCelda.ejecutar(celdaNueva, 1L), ExcepcionCeldaOcupada.class,"La celda seleccionada ya se encuentra ocupada");
+    }
 
     @Test
     @DisplayName("Deberia actualizar el estado de una celda")
