@@ -16,6 +16,7 @@ public class ServicioCambiarEstadoCelda {
 
     public boolean ejecutar(Celda celda, Long idCelda){
         Celda celdaEncontrada = this.repositorioCelda.buscarCeldaId(idCelda);
+        System.out.println(celda.getEstadoCelda());
         if(celda.getEstadoCelda() == Estado.Ocupado.ordinal() && celdaEncontrada.getEstadoCelda() == Estado.Ocupado.ordinal()) {
             throw new ExcepcionCeldaOcupada(CELDA_OCUPADA);
         }

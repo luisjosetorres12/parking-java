@@ -36,7 +36,7 @@ public class ComandoControladorCeldaTest {
     @Test
     @DisplayName("Deberia crear una celda")
     void deberiaCrearCelda() throws Exception{
-        ComandoCelda celda = new ComandoCeldaTestDataBuilder().build();
+        ComandoCelda celda = new ComandoCeldaTestDataBuilder().conEstadoCelda(0).build();
 
         mocMvc.perform(post("/celda")
                         .contentType(MediaType.APPLICATION_JSON)

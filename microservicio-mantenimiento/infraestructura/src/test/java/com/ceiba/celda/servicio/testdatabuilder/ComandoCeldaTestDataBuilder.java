@@ -9,7 +9,6 @@ public class ComandoCeldaTestDataBuilder {
 
     public ComandoCeldaTestDataBuilder(){
         this.tipoVehiculo = 0;
-        this.estadoCelda = 0;
     }
 
     public ComandoCeldaTestDataBuilder conEstadoCelda(int estadoCelda) {
@@ -17,5 +16,5 @@ public class ComandoCeldaTestDataBuilder {
         return this;
     }
 
-    public ComandoCelda build() {return new ComandoCelda(this.id ,this.estadoCelda, this.tipoVehiculo);}
+    public ComandoCelda build() {return new ComandoCelda(id ,tipoVehiculo,estadoCelda );}
 }
