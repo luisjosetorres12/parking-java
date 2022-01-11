@@ -4,7 +4,6 @@ import com.ceiba.celda.modelo.dto.DtoCelda;
 import com.ceiba.celda.puerto.dao.DaoCelda;
 import org.springframework.stereotype.Component;
 
-import javax.xml.stream.events.DTD;
 import java.util.List;
 
 @Component

@@ -1,6 +1,5 @@
 package com.ceiba.celda.modelo.dto;
 
-import com.ceiba.celda.modelo.entidad.Estado;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
