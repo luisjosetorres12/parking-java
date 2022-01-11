@@ -10,12 +10,18 @@ public class CeldaTestDataBuilder {
 
     public CeldaTestDataBuilder(){
         this.tipoVehiculo = 1;
-        this.estadoCelda = 2;
+        this.estadoCelda = 1;
     }
 
     public CeldaTestDataBuilder conTipoVehiculo(int tipoVehiculo) {
         this.tipoVehiculo = tipoVehiculo;
         return this;
+    }
+
+    public CeldaTestDataBuilder conEstadoCelda(int estadoCelda) {
+        this.estadoCelda = estadoCelda;
+        return this;
+
     }
 
     public Celda build() {return new Celda(id,tipoVehiculo,estadoCelda);}
