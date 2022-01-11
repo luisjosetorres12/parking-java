@@ -24,5 +24,10 @@ public class CeldaTestDataBuilder {
 
     }
 
+    public CeldaTestDataBuilder conId(Long id){
+        this.id = id;
+        return this;
+    }
+
     public Celda build() {return new Celda(id,tipoVehiculo,estadoCelda);}
 }
