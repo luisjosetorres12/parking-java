@@ -17,6 +17,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -44,5 +45,11 @@ public class ComandoControladorCeldaTest {
                 .andExpect(content().json("{'valor': 2}"));
     }
 
-
+    void deberiaCambiarEstadoCelda() throws Exception {
+        ComandoCelda celda = new ComandoCeldaTestDataBuilder().build();
+        mocMvc.perform(put("/1")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(celda)))
+                .andExpect(status().isOk());
+    }
 }
