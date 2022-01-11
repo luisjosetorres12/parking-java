@@ -94,4 +94,11 @@ public class ValidadorArgumento {
             throw new ExcepcionValorInvalido(mensaje);
         }
     }
+
+    public static void validarTipoCelda(int tipoCelda, String mensaje){
+        if(tipoCelda < 0 || tipoCelda > 1 ) {
+            throw new ExcepcionValorInvalido(mensaje);
+        }
+    }
+
 }
