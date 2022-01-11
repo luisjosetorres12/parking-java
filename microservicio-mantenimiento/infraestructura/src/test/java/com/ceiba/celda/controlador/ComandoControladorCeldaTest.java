@@ -52,6 +52,7 @@ public class ComandoControladorCeldaTest {
         mocMvc.perform(put("/1")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(celda)))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andExpect(content().json("{'valor': true}"));
     }
 }
