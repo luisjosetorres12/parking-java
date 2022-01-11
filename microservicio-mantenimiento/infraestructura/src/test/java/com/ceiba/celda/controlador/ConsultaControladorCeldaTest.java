@@ -69,10 +69,9 @@ public class ConsultaControladorCeldaTest {
         mocMvc.perform(get("/celda/1")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].tipovehiculo", is(0)))
-                .andExpect(jsonPath("$[0].estadoCelda", is(0)))
-                .andExpect(jsonPath("$[0].id", is(1)));
+                .andExpect(jsonPath("$.tipovehiculo", is(0)))
+                .andExpect(jsonPath("$.estadoCelda", is(0)))
+                .andExpect(jsonPath("$.id", is(1)));
     }
 
     @Test
@@ -80,7 +79,6 @@ public class ConsultaControladorCeldaTest {
     void deberiaObtenerDetalles() throws Exception {
         mocMvc.perform(get("/celda/detalles")
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(1)));
+                .andExpect(status().isOk());
     }
 }
