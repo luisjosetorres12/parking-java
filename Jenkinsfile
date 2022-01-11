@@ -45,14 +45,13 @@ pipeline {
       }
     }
 
-        stage('Static Code Analysis') {
-            steps{
-            echo '------------>Análisis de código estático<------------'
-            withSonarQubeEnv('Sonar') {
-                sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner"
-            }
-            }
-        }
+		stage('Static Code Analysis') {
+			steps{
+				sonarqubeMasQualityGatesP(sonarKey:'co.com.ceiba.adn:ceiba.parqueadero-jose.torres',
+				sonarName:'CeibaADN-parqueadero(jose.torres)',
+				sonarPathProperties:'./sonar-project.properties')
+			}
+		}
 
     stage('Build') {
       steps {
