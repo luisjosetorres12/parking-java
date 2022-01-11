@@ -12,5 +12,10 @@ public class ComandoCeldaTestDataBuilder {
         this.estadoCelda = 0;
     }
 
+    public ComandoCeldaTestDataBuilder conEstadoCelda(int estadoCelda) {
+        this.estadoCelda = estadoCelda;
+        return this;
+    }
+
     public ComandoCelda build() {return new ComandoCelda(this.id ,this.estadoCelda, this.tipoVehiculo);}
 }
