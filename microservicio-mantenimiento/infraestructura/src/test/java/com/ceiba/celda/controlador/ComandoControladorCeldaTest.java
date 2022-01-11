@@ -43,4 +43,6 @@ public class ComandoControladorCeldaTest {
                 .andExpect(status().isOk())
                 .andExpect(content().json("{'valor': 2}"));
     }
+
+
 }

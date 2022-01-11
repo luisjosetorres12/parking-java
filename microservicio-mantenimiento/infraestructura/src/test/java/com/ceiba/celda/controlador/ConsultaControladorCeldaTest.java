@@ -34,4 +34,12 @@ public class ConsultaControladorCeldaTest {
                 .andExpect(status().isOk())
                 .andExpect(content().json("{'id':1, 'tipoVehiculo':0, 'estadoCelda':0}"));
     }
+
+    @Test
+    @DisplayName("Deberia listar las celdas")
+    void deberiaListarCeldas() throws Exception {
+        mocMvc.perform(get("/celda").contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().json("[{'id':1, 'tipoVehiculo':0, 'estadoCelda':0}]"));
+    }
 }
