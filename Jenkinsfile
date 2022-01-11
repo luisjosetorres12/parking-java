@@ -58,7 +58,7 @@ pipeline {
       steps {
         echo "------------>Build<------------"
          sh './gradlew --b ./microservicio-mantenimiento/build.gradle clean'
-         sh './gradlew --b ./microservicio-mantenimiento/build.gradle build -x test'
+         sh './gradlew --b ./microservicio-mantenimiento/build.gradle build'
       }
     }
   }
