@@ -49,7 +49,8 @@ public class ComandoControladorCeldaTest {
     @DisplayName("Deberia actualizar una celda")
     void deberiaCambiarEstadoCelda() throws Exception {
         ComandoCelda celda = new ComandoCeldaTestDataBuilder().conEstadoCelda(1).build();
-        mocMvc.perform(put("/1")
+        Long id = 1L;
+        mocMvc.perform(put("/celda/{idCelda}", id)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(celda)))
                 .andExpect(status().isOk())
