@@ -60,8 +60,7 @@ public class RepositorioTicketMysql implements IRepositoryTicket {
     public boolean matriculaActual(String matriculaVehiculo) {
         MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource();
         mapSqlParameterSource.addValue("matriculaVehiculo", matriculaVehiculo);
-        boolean result = this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlMatriculaActual, mapSqlParameterSource, Boolean.class);
-        return result;
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlMatriculaActual, mapSqlParameterSource, Boolean.class);
     }
 
     @Override
