@@ -5,7 +5,7 @@ import com.ceiba.celda.puerto.repositorio.IRepositorioCelda;
 import com.ceiba.dominio.excepcion.ExcepcionSinDatos;
 
 public class ServicioBuscarCelda {
-    private final String CELDA_NO_ENCONTRADA = "La celda que desea no ha sido encontrada";
+    private static final String CELDA_NO_ENCONTRADA = "La celda que desea no ha sido encontrada";
     private final IRepositorioCelda repositorioCelda;
 
 
