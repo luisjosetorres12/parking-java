@@ -16,7 +16,7 @@ public class ServicioBuscarCeldaTest {
     void deberiaDarErrorPorCeldaNoEncontrada(){
         IRepositorioCelda repositorioCelda = Mockito.mock(IRepositorioCelda.class);
         Mockito.when(repositorioCelda.buscarCeldaId(Mockito.anyLong())).thenReturn(null);
-
+        Celda celdaNueva = new CeldaTestDataBuilder().conEstadoCelda(0).conId(1L).build();
         ServicioBuscarCelda servicioBuscarCelda = new ServicioBuscarCelda(repositorioCelda);
         BasePrueba.assertThrows(() -> servicioBuscarCelda.ejecutar(1L), ExcepcionSinDatos.class,"La celda que desea no ha sido encontrada");
     }
@@ -25,7 +25,7 @@ public class ServicioBuscarCeldaTest {
     @DisplayName("Deberia encontrar una celda")
     void noDeberiaDarErrorPorCeldaNoEncontrada(){
         IRepositorioCelda repositorioCelda = Mockito.mock(IRepositorioCelda.class);
-        Celda celdaNueva = new CeldaTestDataBuilder().conEstadoCelda(0).build();
+        Celda celdaNueva = new CeldaTestDataBuilder().conEstadoCelda(0).conId(1L).build();
         Mockito.when(repositorioCelda.buscarCeldaId(Mockito.anyLong())).thenReturn(celdaNueva);
 
         ServicioBuscarCelda servicioBuscarCelda = new ServicioBuscarCelda(repositorioCelda);

@@ -36,6 +36,7 @@ public class RepositorioTicketMysql implements IRepositoryTicket {
 
     @Override
     public Long crearTicket(Ticket ticket) {
+        System.out.println("EL valor es: "+ ticket.getValorRecargaPorRetrasos());
         return this.customNamedParameterJdbcTemplate.crear(ticket, sqlCrear);
     }
 

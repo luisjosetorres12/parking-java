@@ -15,11 +15,11 @@ public class ServicioCambiarEstadoCelda {
     }
 
     public boolean ejecutar(Celda celda, Long idCelda){
+        celda.setId(idCelda);
         Celda celdaEncontrada = this.repositorioCelda.buscarCeldaId(idCelda);
         if(celda.getEstadoCelda() == Estado.Ocupado.ordinal() && celdaEncontrada.getEstadoCelda() == Estado.Ocupado.ordinal()) {
             throw new ExcepcionCeldaOcupada(CELDA_OCUPADA);
         }
-        celda.setId(idCelda);
         this.repositorioCelda.cambiarEstadoCelda(celda);
         return true;
     }

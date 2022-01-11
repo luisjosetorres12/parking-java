@@ -23,6 +23,7 @@ public class ServicioCrearTicket {
     public Long ejecutar(Ticket ticket){
         validarDeudaActual(ticket.getDocumentoUsuario());
         validarMatricula(ticket.getMatriculaVehiculo());
+        System.out.println(ticket.getValorRecargaPorRetrasos());
         ticket.setFechaSalida(this.servicioCalcularFechaSalida.ejecutar(ticket.getFechaEntrada(), ticket.getTipoPlan()));
         float extras = recargoPorDiasFestivos(ticket.getFechaEntrada(), ticket.getFechaSalida());
         ticket.setValorRecargaFestivos(extras);
