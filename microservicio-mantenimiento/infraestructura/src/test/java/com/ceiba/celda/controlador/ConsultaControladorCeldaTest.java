@@ -42,4 +42,20 @@ public class ConsultaControladorCeldaTest {
                 .andExpect(status().isOk())
                 .andExpect(content().json("[{'id':1, 'tipoVehiculo':0, 'estadoCelda':0}]"));
     }
+
+    @Test
+    @DisplayName("Deberia listar las celdas disponibles por tipo vehiculo")
+    void deberiaListarCeldasTipoVehiculo() throws Exception {
+        mocMvc.perform(get("/celda/disponibles-vehiculo/0").contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().json("[{'id':1, 'tipoVehiculo':0, 'estadoCelda':0}]"));
+    }
+
+    @Test
+    @DisplayName("Deberia listar las celdas disponibles")
+    void deberiaListarCeldasDisponibles() throws Exception {
+        mocMvc.perform(get("/celda/disponibles").contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().json("[]"));
+    }
 }

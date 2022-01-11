@@ -28,7 +28,7 @@ public class Ticket {
         this.valor = valor;
         this.valorRecargaFestivos = valorRecargaFestivos;
         this.valorTotal = valorTotal;
-        this.fechaEntrada = fechaEntrada;
+        this.fechaEntrada = (Date) fechaEntrada.clone();
         this.documentoUsuario = documentoUsuario;
         this.matriculaVehiculo = matriculaVehiculo;
         this.tipoPlan = tipoPlan;
