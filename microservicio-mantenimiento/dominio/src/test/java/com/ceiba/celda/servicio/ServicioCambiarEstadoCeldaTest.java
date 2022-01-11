@@ -13,13 +13,6 @@ import org.mockito.Mockito;
 public class ServicioCambiarEstadoCeldaTest {
 
     @Test
-    @DisplayName("Deberia lanzar una exepecion el tipo de celda sea invalido")
-    void deberiaDarErrorPorCeldaOcupada() {
-        CeldaTestDataBuilder celdaTestDataBuilder = new CeldaTestDataBuilder().conEstadoCelda(0);
-        BasePrueba.assertThrows(celdaTestDataBuilder::build, ExcepcionCeldaOcupada.class, "La celda seleccionada ya se encuentra ocupada");
-    }
-
-    @Test
     @DisplayName("Deberia actualizar el estado de una celda")
     void deberiaCambiarEstadoCelda() {
         Celda celdaTestDataBuilder = new CeldaTestDataBuilder().conEstadoCelda(1).build();
