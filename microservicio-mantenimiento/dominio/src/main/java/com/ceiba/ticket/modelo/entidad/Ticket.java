@@ -8,7 +8,7 @@ import java.util.Date;
 @Getter
 @Setter
 public class Ticket {
-    private final int VALOR_DEFAULT_TICKET = 0;
+    private static final int VALOR_DEFAULT_TICKET = 0;
     private Long id;
     private Long celdaId;
     private float valor;
